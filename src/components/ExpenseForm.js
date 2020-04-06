@@ -11,11 +11,11 @@ export default class ExpenseForm extends Component {
       amount: props.expense ? props.expense.amount.toString() : "",
       createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
       calendarFocused: false,
-      error: ""
+      error: "",
     };
   }
 
-  onDateChange = createdAt => {
+  onDateChange = (createdAt) => {
     if (createdAt) {
       this.setState(() => ({ createdAt }));
     }
@@ -23,22 +23,22 @@ export default class ExpenseForm extends Component {
   onFocusChange = ({ focused }) => {
     this.setState(() => ({ calendarFocused: focused }));
   };
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     if (!this.state.description || !this.state.amount) {
       this.setState(() => ({
-        error: "Please Provide Valid Description And Amount"
+        error: "Please Provide Valid Description And Amount",
       }));
     } else {
       this.setState(() => ({
-        error: ""
+        error: "",
       }));
 
       this.props.onSubmit({
         description: this.state.description,
         amount: parseFloat(this.state.amount, 10),
         createdAt: this.state.createdAt.valueOf(),
-        note: this.state.note
+        note: this.state.note,
       });
     }
   };
@@ -48,21 +48,23 @@ export default class ExpenseForm extends Component {
         {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.onSubmit}>
           <input
+            className="text-input"
             type="text"
             autoFocus
             placeholder="Add Description"
             value={this.state.description}
-            onChange={e => {
+            onChange={(e) => {
               const description = e.target.value;
               this.setState(() => ({ description }));
             }}
           />
           <input
             type="number"
+            className="text-input"
             step=".01"
             placeholder="Set Amount"
             value={this.state.amount}
-            onChange={e => {
+            onChange={(e) => {
               const amount = e.target.value;
               this.setState(() => ({ amount }));
             }}
@@ -76,9 +78,10 @@ export default class ExpenseForm extends Component {
             isOutsideRange={() => false}
           />
           <textarea
+            className="text-area"
             placeholder="Add A Note About Your Expense"
             value={this.state.note}
-            onChange={e => {
+            onChange={(e) => {
               const note = e.target.value;
               this.setState(() => ({ note }));
             }}
