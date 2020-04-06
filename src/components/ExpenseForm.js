@@ -44,51 +44,51 @@ export default class ExpenseForm extends Component {
   };
   render() {
     return (
-      <div>
-        {this.state.error && <p>{this.state.error}</p>}
-        <form onSubmit={this.onSubmit}>
-          <input
-            className="text-input"
-            type="text"
-            autoFocus
-            placeholder="Add Description"
-            value={this.state.description}
-            onChange={(e) => {
-              const description = e.target.value;
-              this.setState(() => ({ description }));
-            }}
-          />
-          <input
-            type="number"
-            className="text-input"
-            step=".01"
-            placeholder="Set Amount"
-            value={this.state.amount}
-            onChange={(e) => {
-              const amount = e.target.value;
-              this.setState(() => ({ amount }));
-            }}
-          />
-          <SingleDatePicker
-            date={this.state.createdAt}
-            onDateChange={this.onDateChange}
-            focused={this.state.calendarFocused}
-            onFocusChange={this.onFocusChange}
-            numberOfMonths={1}
-            isOutsideRange={() => false}
-          />
-          <textarea
-            className="text-area"
-            placeholder="Add A Note About Your Expense"
-            value={this.state.note}
-            onChange={(e) => {
-              const note = e.target.value;
-              this.setState(() => ({ note }));
-            }}
-          />
-          <button>Submit</button>
-        </form>
-      </div>
+      <form className="form" onSubmit={this.onSubmit}>
+        {this.state.error && <p> className="form__error">{this.state.error}</p>}
+        <input
+          className="text-input"
+          type="text"
+          autoFocus
+          placeholder="Add Description"
+          value={this.state.description}
+          onChange={(e) => {
+            const description = e.target.value;
+            this.setState(() => ({ description }));
+          }}
+        />
+        <input
+          type="number"
+          className="text-input"
+          step=".01"
+          placeholder="Set Amount"
+          value={this.state.amount}
+          onChange={(e) => {
+            const amount = e.target.value;
+            this.setState(() => ({ amount }));
+          }}
+        />
+        <SingleDatePicker
+          date={this.state.createdAt}
+          onDateChange={this.onDateChange}
+          focused={this.state.calendarFocused}
+          onFocusChange={this.onFocusChange}
+          numberOfMonths={1}
+          isOutsideRange={() => false}
+        />
+        <textarea
+          className="text-area"
+          placeholder="Add A Note About Your Expense"
+          value={this.state.note}
+          onChange={(e) => {
+            const note = e.target.value;
+            this.setState(() => ({ note }));
+          }}
+        />
+        <div>
+          <button className="button">Submit</button>
+        </div>
+      </form>
     );
   }
 }
