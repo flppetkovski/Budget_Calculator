@@ -8,13 +8,6 @@ const Header = () => (
         <Link to="/" className="header__title" exact={true}>
           <h1>Expense Calculator</h1>
         </Link>
-        <NavLink
-          className="header__title"
-          to="/create"
-          activeClassName="isActive"
-        >
-          <h3> Create Expense</h3>
-        </NavLink>
       </div>
     </div>
   </header>
